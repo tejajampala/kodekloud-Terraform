@@ -1,10 +1,10 @@
-# Generate a private key
+# Generate a private and public key pair
 resource "tls_private_key" "xfusion_key" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
 
-# Create Key Pair using the public key
+# Add to public key
 resource "aws_key_pair" "xfusion_kp" {
   key_name   = "xfusion-kp"
   public_key = tls_private_key.xfusion_key.public_key_openssh
